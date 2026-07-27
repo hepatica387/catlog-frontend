@@ -1,3 +1,5 @@
+// @ts-nocheck
+export function initDetailPageLogic() {
 const catData = {
   1: {
     name: "먼지",
@@ -239,7 +241,8 @@ elements.adoptButton.addEventListener("click", () => {
 });
 
 elements.backButton.addEventListener("click", () => {
-  history.back();
+  window.history.back();
 });
 
 initDetailPage();
+}

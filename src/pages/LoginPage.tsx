@@ -3,10 +3,14 @@ import { Sidebar } from "../components/Sidebar";
 import { TopBar } from "../components/TopBar";
 import { Footer } from "../components/Footer";
 import { ConsultationButton } from "../components/ConsultationButton";
+import { usePageLogic } from "../hooks/usePageLogic";
+import { initLoginPage } from "../pageLogic/login";
 
 export function LoginPage() {
+  usePageLogic(initLoginPage);
+
   return (
-    <PageFrame title="로그인" scriptUrl="/js/login.js">
+    <PageFrame title="로그인">
       <Sidebar />
       <div className="main-content">
       <TopBar />

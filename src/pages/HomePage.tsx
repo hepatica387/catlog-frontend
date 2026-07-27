@@ -1,4 +1,6 @@
 import { PageFrame } from "../components/PageFrame";
+import { usePageLogic } from "../hooks/usePageLogic";
+import { initHomePage } from "../pageLogic/home";
 import { Sidebar } from "../components/Sidebar";
 import { TopBar } from "../components/TopBar";
 import { Footer } from "../components/Footer";
@@ -29,8 +31,10 @@ function PawIcon() {
 }
 
 export function HomePage() {
+  usePageLogic(initHomePage);
+
   return (
-    <PageFrame title="FELIA CATLOG" scriptUrl="/js/main.js" bodyClass="home-page">
+    <PageFrame title="FELIA CATLOG" bodyClass="home-page">
       <Sidebar />
       <main className="main-content">
         <TopBar />

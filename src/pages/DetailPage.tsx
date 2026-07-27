@@ -1,12 +1,16 @@
 import { PageFrame } from "../components/PageFrame";
+import { usePageLogic } from "../hooks/usePageLogic";
+import { initDetailPageLogic } from "../pageLogic/detail";
 import { Sidebar } from "../components/Sidebar";
 import { TopBar } from "../components/TopBar";
 import { Footer } from "../components/Footer";
 import { ConsultationButton } from "../components/ConsultationButton";
 
 export function DetailPage() {
+  usePageLogic(initDetailPageLogic);
+
   return (
-    <PageFrame title="고양이 상세 정보" scriptUrl="/js/detail.js">
+    <PageFrame title="고양이 상세 정보">
       {/* 왼쪽 사이드바 */}
     <Sidebar />
       {/* 메인 콘텐츠 */}

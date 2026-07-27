@@ -1,4 +1,6 @@
 import { PageFrame } from "../components/PageFrame";
+import { usePageLogic } from "../hooks/usePageLogic";
+import { initAdoptionPage } from "../pageLogic/adoption";
 import { Sidebar } from "../components/Sidebar";
 import { TopBar } from "../components/TopBar";
 import { Footer } from "../components/Footer";
@@ -64,8 +66,10 @@ const cats: Cat[] = [
 ];
 
 export function AdoptionPage() {
+  usePageLogic(initAdoptionPage);
+
   return (
-    <PageFrame title="고양이 분양" scriptUrl="/js/adoption.js">
+    <PageFrame title="고양이 분양">
       <Sidebar />
       {/* 메인 콘텐츠 */}
     <div className="main-content">

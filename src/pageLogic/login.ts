@@ -1,3 +1,5 @@
+// @ts-nocheck
+export function initLoginPage() {
 const loginForm = document.getElementById("loginForm");
 
 loginForm.addEventListener("submit", (event) => {
@@ -10,3 +12,4 @@ loginForm.addEventListener("submit", (event) => {
   alert("로그인 되었습니다!");
   window.location.href = "/#/";
 });
+}

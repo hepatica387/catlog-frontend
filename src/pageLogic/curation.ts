@@ -1,3 +1,5 @@
+// @ts-nocheck
+export function initCurationPage() {
 const questions = [
   {
     title: "평균 외출 시간은 어느 정도인가요?",
@@ -271,3 +273,4 @@ lifestyleSubmitButton.addEventListener("click", () => {
 });
 
 renderQuestion();
+}

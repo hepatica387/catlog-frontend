@@ -1,11 +1,15 @@
 import { PageFrame } from "../components/PageFrame";
+import { usePageLogic } from "../hooks/usePageLogic";
+import { initConsultationPage } from "../pageLogic/consultation";
 import { Sidebar } from "../components/Sidebar";
 import { TopBar } from "../components/TopBar";
 import { Footer } from "../components/Footer";
 
 export function ConsultationPage() {
+  usePageLogic(initConsultationPage);
+
   return (
-    <PageFrame title="온라인 상담" scriptUrl="/js/consultation.js">
+    <PageFrame title="온라인 상담">
       {/* 왼쪽 사이드바 */}
     <Sidebar />
       {/* 메인 콘텐츠 */}

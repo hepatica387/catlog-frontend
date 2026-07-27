@@ -2,10 +2,14 @@ import { PageFrame } from "../components/PageFrame";
 import { Sidebar } from "../components/Sidebar";
 import { TopBar } from "../components/TopBar";
 import { Footer } from "../components/Footer";
+import { usePageLogic } from "../hooks/usePageLogic";
+import { initReservationPage } from "../pageLogic/reservation";
 
 export function ReservationPage() {
+  usePageLogic(initReservationPage);
+
   return (
-    <PageFrame title="방문 예약" scriptUrl="/js/reservation.js">
+    <PageFrame title="방문 예약">
       {/* 왼쪽 사이드바 */}
     <Sidebar />
       {/* 메인 콘텐츠 */}

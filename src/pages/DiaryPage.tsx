@@ -1,11 +1,15 @@
 import { PageFrame } from "../components/PageFrame";
+import { usePageLogic } from "../hooks/usePageLogic";
+import { initDiaryPage } from "../pageLogic/diary";
 import { Sidebar } from "../components/Sidebar";
 import { TopBar } from "../components/TopBar";
 import { Footer } from "../components/Footer";
 
 export function DiaryPage() {
+  usePageLogic(initDiaryPage);
+
   return (
-    <PageFrame title="집사일기" scriptUrl="/js/diary.js">
+    <PageFrame title="집사일기">
       {/* 왼쪽 사이드바 */}
     <Sidebar />
       {/* 메인 콘텐츠 */}

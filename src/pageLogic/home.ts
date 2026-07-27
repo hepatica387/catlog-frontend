@@ -1,3 +1,5 @@
+// @ts-nocheck
+export function initHomePage() {
 const cards = document.querySelectorAll(".cat-card");
 
 cards.forEach((card) => {
@@ -5,3 +7,4 @@ cards.forEach((card) => {
     window.location.href = "/#/detail";
   });
 });
+}

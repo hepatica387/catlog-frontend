@@ -1,3 +1,5 @@
+// @ts-nocheck
+export function initAdoptionPage() {
 function activeBtn(e) {
   const btns = document.querySelectorAll(".category-btn");
   const target = e.target.closest(".category-btn");
@@ -39,3 +41,4 @@ function activeBtn(e) {
 document.querySelectorAll(".category-btn").forEach((button) => {
   button.addEventListener("click", activeBtn);
 });
+}

@@ -1,11 +1,15 @@
 import { PageFrame } from "../components/PageFrame";
+import { usePageLogic } from "../hooks/usePageLogic";
+import { initCurationPage } from "../pageLogic/curation";
 import { Sidebar } from "../components/Sidebar";
 import { TopBar } from "../components/TopBar";
 import { Footer } from "../components/Footer";
 
 export function CurationPage() {
+  usePageLogic(initCurationPage);
+
   return (
-    <PageFrame title="AI 맞춤 큐레이션" scriptUrl="/js/curation.js">
+    <PageFrame title="AI 맞춤 큐레이션">
       {/* 왼쪽 사이드바 */}
     <Sidebar />
       {/* 메인 콘텐츠 */}

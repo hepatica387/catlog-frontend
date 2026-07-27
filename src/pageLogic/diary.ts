@@ -1,3 +1,5 @@
+// @ts-nocheck
+export function initDiaryPage() {
 const diaryPosts = [
   {
     title: "처음으로 무릎 위에 올라왔어요",
@@ -173,3 +175,4 @@ diaryViewButtons.forEach((button) => {
 });
 
 renderDiaryPosts();
+}

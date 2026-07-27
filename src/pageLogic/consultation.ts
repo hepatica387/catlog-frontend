@@ -1,3 +1,5 @@
+// @ts-nocheck
+export function initConsultationPage() {
 const chatForm = document.getElementById("chatForm");
 const chatInput = document.getElementById("chatInput");
 const chatMessages = document.getElementById("chatMessages");
@@ -67,3 +69,4 @@ chatForm?.addEventListener("submit", (event) => {
     );
   }, 400);
 });
+}
