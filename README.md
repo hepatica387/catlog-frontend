@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # FELIA CATLOG Frontend
 
 Create React App 기반 React + TypeScript SPA입니다.
@@ -29,3 +30,6 @@ npm run build
 `PageFrame`은 문서 제목, 내부 링크 이동, 페이지별 기존 스크립트 실행을 공통 처리합니다.
 
 라우팅은 정적 호스팅과 새로고침을 지원하도록 `HashRouter`를 사용합니다. 예: `/#/adoption`
+=======
+# catlog
+>>>>>>> 4f9f8d55214bf110a2177866b041fd56f803441a
