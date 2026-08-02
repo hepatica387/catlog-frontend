@@ -1944,128 +1944,10 @@ body.home-page {
   color: #2d2926;
 }
 
-.home-page .sidebar {
-  flex: 0 0 168px;
-  width: 168px;
-  min-height: 100vh;
-  padding: 32px 12px 24px;
-  border-right: 1px solid #efe4dc;
-  background: #fbf7f4;
-  align-items: stretch;
-}
-
-.home-page .sidebar-logo {
-  margin: 0 0 36px;
-  text-align: center;
-}
-
-.home-page .sidebar-logo img {
-  width: 128px;
-  margin: 0 auto;
-}
-
-.home-page .sidebar-nav {
-  gap: 12px;
-  text-align: left;
-}
-
-.home-page .sidebar-nav a {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-height: 36px;
-  padding: 0 14px;
-  border-radius: 7px;
-  color: #332a25;
-  font-size: 12px;
-  font-weight: 800;
-}
-
-.home-page .sidebar-nav a:hover,
-.home-page .sidebar-nav a.active {
-  background: #f3e4db;
-  color: #6f3f25;
-}
-
-.home-page .sidebar-nav svg {
-  flex: 0 0 16px;
-  width: 16px;
-  height: 16px;
-  margin: 0;
-  fill: currentColor;
-}
-
-.home-page .sidebar-consult-card {
-  margin-top: auto;
-  padding: 17px 12px 0;
-  overflow: hidden;
-  border: 1px solid #f0dfd3;
-  border-radius: 10px;
-  background: #fffaf4;
-  box-shadow: 0 8px 18px rgba(97, 63, 42, 0.06);
-}
-
-.home-page .sidebar-consult-card h2 {
-  margin-bottom: 10px;
-  color: #111;
-  font-size: 12px;
-  font-weight: 900;
-  line-height: 1.35;
-}
-
-.home-page .sidebar-consult-card p {
-  margin-bottom: 11px;
-  color: #5f5751;
-  font-size: 8px;
-  font-weight: 800;
-  line-height: 1.45;
-}
-
-.home-page .sidebar-consult-card a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 28px;
-  margin-bottom: 8px;
-  border-radius: 5px;
-  background: #7a482d;
-  color: #fff;
-  font-size: 10px;
-  font-weight: 900;
-}
-
-.home-page .sidebar-consult-card a:hover {
-  background: #603723;
-}
-
-.home-page .sidebar-consult-card img {
-  width: 92px;
-  height: 82px;
-  margin: 0 auto;
-  object-fit: contain;
-}
-
 .home-page .main-content {
   flex: 1;
   overflow-y: auto;
   background: #fff;
-}
-
-.home-page .top-bar {
-  min-height: 46px;
-  padding: 0 24px;
-  border-bottom: none;
-  background: #fff;
-  font-size: 10px;
-  font-weight: 800;
-}
-
-.home-page .user-menu {
-  gap: 5px;
-}
-
-.home-page .user-menu a {
-  color: #111;
 }
 
 .home-page .banner {
@@ -2372,27 +2254,6 @@ body.home-page {
     overflow: visible;
   }
 
-  .home-page .sidebar {
-    width: 100%;
-    min-height: auto;
-    padding: 18px 16px;
-    border-right: none;
-    border-bottom: 1px solid #efe4dc;
-  }
-
-  .home-page .sidebar-logo {
-    margin-bottom: 16px;
-  }
-
-  .home-page .sidebar-consult-card {
-    display: none;
-  }
-
-  .home-page .sidebar-nav {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
-
   .home-page .main-content {
     overflow: visible;
   }
@@ -2424,10 +2285,6 @@ body.home-page {
 }
 
 @media (max-width: 520px) {
-  .home-page .sidebar-nav {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .home-page .quick-menu {
     grid-template-columns: 1fr 1fr;
     gap: 10px;
@@ -2510,18 +2367,8 @@ body.home-page {
   font-weight: 800;
 }
 
-.home-page .sidebar {
-  flex-basis: 178px;
-  width: 178px;
-}
-
 .home-page .main-content {
   background: #fffdfb;
-}
-
-.home-page .top-bar {
-  min-height: 50px;
-  padding: 0 30px;
 }
 
 .home-page .banner {
@@ -2677,6 +2524,24 @@ body:has(.sidebar) .main-content {
   font-weight: 900;
 }
 
+.user-menu button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #666;
+  font: inherit;
+  cursor: pointer;
+}
+
+.user-menu button:hover {
+  color: #6f3f25;
+}
+
+.user-menu .user-name {
+  color: #332a25;
+  font-weight: 900;
+}
+
 .auth-page-container {
   min-height: calc(100vh - 50px);
   padding: 48px 20px 72px;
@@ -2789,8 +2654,7 @@ body:has(.sidebar) .main-content {
     display: block;
   }
 
-  .sidebar,
-  .home-page .sidebar {
+  .sidebar {
     width: 100%;
     min-height: auto;
     padding: 18px 16px;
@@ -2798,8 +2662,7 @@ body:has(.sidebar) .main-content {
     border-bottom: 1px solid #efe4dc;
   }
 
-  .sidebar-logo,
-  .home-page .sidebar-logo {
+  .sidebar-logo {
     margin-bottom: 16px;
   }
 
@@ -2807,8 +2670,7 @@ body:has(.sidebar) .main-content {
     display: none;
   }
 
-  .sidebar-nav,
-  .home-page .sidebar-nav {
+  .sidebar-nav {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }

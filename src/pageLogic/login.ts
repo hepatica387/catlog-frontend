@@ -10,6 +10,6 @@ loginForm.addEventListener("submit", (event) => {
 
   console.log("로그인 시도:", { email, password });
   alert("로그인 되었습니다!");
-  window.location.href = "/#/";
+  window.location.href = "/";
 });
 }

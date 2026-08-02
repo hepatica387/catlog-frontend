@@ -1,6 +1,7 @@
 import { createRoot } from "react-dom/client";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { App } from "./App";
+import { AuthProvider } from "./contexts/AuthContext";
 import "./styles/variables.css";
 import "./styles/reset.css";
 import "./styles/common.css";
@@ -14,7 +15,9 @@ if (!root) {
 }
 
 createRoot(root).render(
-  <HashRouter>
-    <App />
-  </HashRouter>,
+  <BrowserRouter>
+    <AuthProvider>
+      <App />
+    </AuthProvider>
+  </BrowserRouter>,
 );

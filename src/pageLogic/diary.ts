@@ -144,7 +144,7 @@ diaryWriteButton.addEventListener("click", () => {
 
   if (!isLoggedIn) {
     alert("로그인 후 글쓰기가 가능합니다.");
-    window.location.href = "/#/login";
+    window.location.href = "/login";
     return;
   }
 
