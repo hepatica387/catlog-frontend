@@ -1,6 +1,6 @@
 export interface Cat {
-  id: number;
+  breedId: number;
   name: string;
   breed: string;
-  image: string;
+  mainImgUrl: string;
 }

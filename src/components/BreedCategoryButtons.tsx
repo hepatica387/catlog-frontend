@@ -1,26 +1,34 @@
 interface BreedCategoryButtonsProps {
-  breeds: string[];
+  breedIds: Record<string, number>;
+  selectedBreedId: number | null;
+  onSelect: (breedId: number | null) => void;
 }
 
 export function BreedCategoryButtons({
-  breeds,
+  breedIds,
+  selectedBreedId,
+  onSelect,
 }: BreedCategoryButtonsProps) {
   return (
     <div className="breed-categories">
       <button
         type="button"
-        className="category-btn active"
+        className={`category-btn ${selectedBreedId === null ? "active" : ""}`}
         data-category="all"
+        onClick={() => onSelect(null)}
       >
         전체
       </button>
 
-      {breeds.map((breed) => (
+      {Object.entries(breedIds).map(([breed, breedId]) => (
         <button
           key={breed}
           type="button"
-          className="category-btn"
-          data-category={breed}
+          className={`category-btn ${
+            selectedBreedId === breedId ? "active" : ""
+          }`}
+          data-category={breedId}
+          onClick={() => onSelect(breedId)}
         >
           {breed}
         </button>
