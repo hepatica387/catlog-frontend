@@ -15,7 +15,7 @@ export function CatCard({ cat }: CatCardProps) {
       className="card cat-card"
       data-category={breed}
     >
-      <img src={`/assets${cat.mainImgUrl}`} alt={`${breed} ${cat.name}`} />
+      <img src={`/assets${cat.imageUrl}`} alt={`${breed} ${cat.name}`} />
       <div className="cat-info">
         <h4>
           {breed} | {cat.name}
