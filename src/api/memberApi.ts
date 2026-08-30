@@ -1,7 +1,6 @@
 import { LoginRequest, LoginResponse } from "../types/Login";
 import type { SignupRequest } from "../types/Member";
-
-const API_BASE_URL = "http://localhost:8080/api";
+import { API_BASE_URL } from "../constants/api";
 
 interface ErrorResponse {
   message?: string;

@@ -8,9 +8,6 @@ import { useLogin } from "../hooks/userLogin";
 export function LoginPage() {
   const { handleSubmit, isSubmitting } = useLogin();
 
-  // const [userId, setUserId] = useState<LoginRequest["userId"]>();
-  // const [userPw, setUserPw] = useState<LoginRequest["userPw"]>();
-
   return (
     <PageFrame title="로그인">
       <Sidebar />

@@ -1,6 +1,5 @@
 import { Cat } from "../types/Cat";
-
-const API_BASE_URL = "http://localhost:8080/api";
+import { API_BASE_URL } from "../constants/api";
 
 export async function findAll() {
   const response = await fetch(`${API_BASE_URL}/cats`);
