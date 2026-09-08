@@ -66,7 +66,7 @@ export function LoginPage() {
 
             <div className="signup-link">
               아직 계정이 없으신가요?
-              <a href="/signup">회원가입하기</a>
+              <a href="/signup"> 회원가입하기</a>
             </div>
           </div>
         </main>

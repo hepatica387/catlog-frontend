@@ -7,7 +7,15 @@ export async function postReservations(request: ReservationData): Promise<any> {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(request),
+    body: JSON.stringify({
+      userId: request.userId,
+      branchId: request.branchId,
+      purpose: request.purpose,
+      reservationDate: request.reservationDate,
+      reservationTime: request.reservationTime,
+      ...(request.catId?.trim() ? { catId: request.catId } : {}),
+      memo: null,
+    }),
   });
 
   if (!res.ok) {
@@ -24,5 +32,6 @@ export async function postReservations(request: ReservationData): Promise<any> {
     throw new Error(message);
   }
 
-  return res.json() as Promise<any>;
+  const body = await res.text();
+  return body ? JSON.parse(body) : undefined;
 }

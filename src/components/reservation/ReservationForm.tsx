@@ -5,10 +5,12 @@ import { ReservationOptions } from "./ReservationOptions";
 
 export function ReservationForm() {
   const [reservation, setReservation] = useState<ReservationData>({
-    place: "",
-    date: "",
-    time: "",
+    userId: "",
+    branchId: "",
     purpose: "",
+    reservationDate: "",
+    reservationTime: "",
+    memo: null,
   });
 
   function updateReservation(update: Partial<ReservationData>) {
@@ -16,7 +18,10 @@ export function ReservationForm() {
   }
 
   return (
-    <section className="reservation-form-panel" aria-labelledby="reservationFormTitle">
+    <section
+      className="reservation-form-panel"
+      aria-labelledby="reservationFormTitle"
+    >
       <div className="reservation-form-heading">
         <h2 id="reservationFormTitle">방문 예약하기</h2>
         <p>원하시는 날짜와 시간을 선택해주세요.</p>
@@ -30,9 +35,11 @@ export function ReservationForm() {
           </legend>
           <select
             id="reservationPlace"
-            name="place"
-            value={reservation.place}
-            onChange={(event) => updateReservation({ place: event.target.value })}
+            name="branchId"
+            value={reservation.branchId}
+            onChange={(event) =>
+              updateReservation({ branchId: event.target.value })
+            }
             required
           >
             <option value="">방문 지점을 선택해주세요</option>
@@ -43,8 +50,10 @@ export function ReservationForm() {
 
         <div className="reservation-form-grid">
           <ReservationCalendar
-            selectedDate={reservation.date}
-            onDateChange={(date) => updateReservation({ date })}
+            selectedDate={reservation.reservationDate}
+            onDateChange={(reservationDate) =>
+              updateReservation({ reservationDate })
+            }
           />
           <ReservationOptions
             reservation={reservation}

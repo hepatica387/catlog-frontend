@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import type { ReservationData } from "../../types/Reservation";
 import { postReservations } from "../../api/reservationApi";
+import { useReservation } from "../../contexts/ReservationContext";
 
 const reservationTimes = [
   "10:00",
@@ -31,18 +33,47 @@ export function ReservationOptions({
   onChange,
 }: ReservationOptionsProps) {
   const auth = useAuth();
+  const { catId, setCatId } = useReservation();
   const navigation = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleBooking = (reservation: ReservationData) => {
-    if (!auth.isLoggedIn) {
+  const handleBooking = async (reservation: ReservationData) => {
+    if (isSubmitting) return;
+
+    console.log(reservation);
+    debugger;
+
+    if (!auth.member?.userId) {
       alert("로그인이 필요합니다.");
       navigation("/login");
       return;
     }
 
-    postReservations(reservation)
-      .then((res) => console.log(res))
-      .catch();
+    if (
+      !reservation.branchId ||
+      !reservation.reservationDate ||
+      !reservation.reservationTime ||
+      !reservation.purpose
+    ) {
+      alert("방문 지점, 날짜, 시간, 목적을 모두 선택해주세요.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      await postReservations({
+        ...reservation,
+        userId: auth.member.userId,
+        catId,
+        memo: null,
+      });
+      setCatId(null);
+      alert("방문 예약이 접수되었습니다.");
+    } catch (error) {
+      alert(error instanceof Error ? error.message : "예약에 실패했습니다.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -52,14 +83,18 @@ export function ReservationOptions({
           <span className="reservation-step-badge">3</span>시간 선택
         </legend>
         <div className="reservation-time-list">
-          {reservationTimes.map((time) => (
+          {reservationTimes.map((reservationTime) => (
             <button
-              key={time}
+              key={reservationTime}
               type="button"
-              className={reservation.time === time ? "selected" : undefined}
-              onClick={() => onChange({ time })}
+              className={
+                reservation.reservationTime === reservationTime
+                  ? "selected"
+                  : undefined
+              }
+              onClick={() => onChange({ reservationTime })}
             >
-              {time}
+              {reservationTime}
             </button>
           ))}
         </div>
@@ -89,9 +124,10 @@ export function ReservationOptions({
       <button
         type="button"
         className="reservation-submit-btn"
+        disabled={isSubmitting}
         onClick={() => handleBooking(reservation)}
       >
-        예약하기
+        {isSubmitting ? "예약 중..." : "예약하기"}
       </button>
     </div>
   );

@@ -1,6 +1,9 @@
 export interface ReservationData {
-  place: string;
-  date: string;
-  time: string;
+  userId: string;
+  branchId: string;
+  catId?: string | null;
   purpose: string;
+  reservationDate: string;
+  reservationTime: string;
+  memo: null;
 }
