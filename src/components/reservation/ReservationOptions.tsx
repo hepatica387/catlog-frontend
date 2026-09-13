@@ -4,6 +4,7 @@ import { useAuth } from "../../hooks/useAuth";
 import type { ReservationData } from "../../types/Reservation";
 import { postReservations } from "../../api/reservationApi";
 import { useReservation } from "../../contexts/ReservationContext";
+import { ReservationCompleteModal } from "./ReservationCompleteModal";
 
 const reservationTimes = [
   "10:00",
@@ -36,12 +37,11 @@ export function ReservationOptions({
   const { catId, setCatId } = useReservation();
   const navigation = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [completedReservation, setCompletedReservation] =
+    useState<ReservationData | null>(null);
 
   const handleBooking = async (reservation: ReservationData) => {
     if (isSubmitting) return;
-
-    console.log(reservation);
-    debugger;
 
     if (!auth.member?.userId) {
       alert("로그인이 필요합니다.");
@@ -68,7 +68,7 @@ export function ReservationOptions({
         memo: null,
       });
       setCatId(null);
-      alert("방문 예약이 접수되었습니다.");
+      setCompletedReservation({ ...reservation });
     } catch (error) {
       alert(error instanceof Error ? error.message : "예약에 실패했습니다.");
     } finally {
@@ -78,6 +78,12 @@ export function ReservationOptions({
 
   return (
     <div className="reservation-side-fields">
+      {completedReservation && (
+        <ReservationCompleteModal
+          reservation={completedReservation}
+          onClose={() => setCompletedReservation(null)}
+        />
+      )}
       <fieldset className="reservation-field reservation-time-field">
         <legend>
           <span className="reservation-step-badge">3</span>시간 선택

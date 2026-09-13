@@ -32,10 +32,15 @@ const breeds = [
 
 export function AdoptionPage() {
   const [cats, setCats] = useState<Cat[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [selectedBreedId, setSelectedBreedId] = useState<number | null>(null);
 
   useEffect(() => {
-    findAll().then(setCats).catch(console.error);
+    findAll()
+      .then(setCats)
+      .catch(() => setError("고양이 목록을 불러오지 못했습니다."))
+      .finally(() => setIsLoading(false));
   }, []);
 
   const filteredCats =
@@ -62,7 +67,13 @@ export function AdoptionPage() {
                 onSelect={setSelectedBreedId}
               />
 
-              <CatGrid cats={filteredCats} />
+              {isLoading ? (
+                <p className="cat-empty-message" role="status">고양이 목록을 불러오는 중입니다.</p>
+              ) : error ? (
+                <p className="cat-empty-message" role="alert">{error}</p>
+              ) : (
+                <CatGrid cats={filteredCats} />
+              )}
             </div>
           </section>
         </main>

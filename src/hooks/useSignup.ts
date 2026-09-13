@@ -1,8 +1,4 @@
-import {
-  type ChangeEvent,
-  type FormEvent,
-  useState,
-} from "react";
+import { type ChangeEvent, type FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signup } from "../api/memberApi";
 
@@ -47,16 +43,12 @@ export function useSignup() {
     setUserIdMessage("사용 가능한 형식의 아이디입니다.");
   }
 
-  function handleEmailDomainChange(
-    event: ChangeEvent<HTMLSelectElement>,
-  ) {
+  function handleEmailDomainChange(event: ChangeEvent<HTMLSelectElement>) {
     setEmailDomain(event.target.value);
   }
 
   function handlePhoneInput(event: FormEvent<HTMLInputElement>) {
-    event.currentTarget.value = formatPhoneNumber(
-      event.currentTarget.value,
-    );
+    event.currentTarget.value = formatPhoneNumber(event.currentTarget.value);
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -69,19 +61,15 @@ export function useSignup() {
 
     const formData = new FormData(event.currentTarget);
     const userPw = String(formData.get("userPw") ?? "");
-    const passwordConfirm = String(
-      formData.get("passwordConfirm") ?? "",
-    );
+    const passwordConfirm = String(formData.get("passwordConfirm") ?? "");
     const userName = String(formData.get("userName") ?? "").trim();
     const emailId = String(formData.get("emailId") ?? "").trim();
-    const customDomain = String(
-      formData.get("emailCustom") ?? "",
-    ).trim();
+    const customDomain = String(formData.get("emailCustom") ?? "").trim();
     const phone = String(formData.get("phone") ?? "").trim();
     const birthDay = String(formData.get("birthDay") ?? "");
     const domain = emailDomain || customDomain;
 
-    if (!/^[a-zA-Z]{5,15}$/.test(userPw)) {
+    if (!/^[a-zA-Z0-9]{5,15}$/.test(userPw)) {
       alert("비밀번호는 영문 5자 이상 15자 이하여야 합니다.");
       return;
     }
@@ -91,7 +79,7 @@ export function useSignup() {
       return;
     }
 
-    if (!/^[가-힣a-zA-Z\s]+$/.test(userName)) {
+    if (!/^[가-힣a-zA-Z0-9\s]+$/.test(userName)) {
       alert("이름에는 한글과 영문만 사용할 수 있습니다.");
       return;
     }
@@ -122,9 +110,7 @@ export function useSignup() {
       navigate("/login");
     } catch (error) {
       const message =
-        error instanceof Error
-          ? error.message
-          : "회원가입에 실패했습니다.";
+        error instanceof Error ? error.message : "회원가입에 실패했습니다.";
 
       alert(message);
     } finally {
