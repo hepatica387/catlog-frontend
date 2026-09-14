@@ -3433,10 +3433,8 @@ body:has(.sidebar) .main-content {
   cursor: pointer;
 }
 
-.diary-search svg {
-  width: 28px;
-  height: 28px;
-  fill: currentColor;
+.diary-search .fa-magnifying-glass {
+  font-size: 20px;
 }
 
 .diary-actions {
