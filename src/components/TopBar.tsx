@@ -10,7 +10,14 @@ export function TopBar() {
       <nav className="user-menu" aria-label="회원 메뉴">
         {isLoggedIn && member ? (
           <>
-            <span className="user-name">{member.userName}님</span>
+            <NavLink
+              to={ROUTES.mypage}
+              className="user-name"
+              aria-label={`${member.userName}님 마이페이지`}
+            >
+              마이페이지
+            </NavLink>
+            {member.userName}님
             <button type="button" onClick={logout}>
               로그아웃
             </button>
@@ -19,18 +26,14 @@ export function TopBar() {
           <>
             <NavLink
               to={ROUTES.login}
-              className={({ isActive }) =>
-                isActive ? "active" : undefined
-              }
+              className={({ isActive }) => (isActive ? "active" : undefined)}
             >
               로그인
             </NavLink>
             <span aria-hidden="true">|</span>
             <NavLink
               to={ROUTES.signup}
-              className={({ isActive }) =>
-                isActive ? "active" : undefined
-              }
+              className={({ isActive }) => (isActive ? "active" : undefined)}
             >
               회원가입
             </NavLink>

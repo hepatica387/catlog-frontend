@@ -1,0 +1,344 @@
+.mypage-content {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 26px 24px;
+  color: #202020;
+}
+.mypage-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 150px;
+  padding: 24px 38px;
+  margin-bottom: 14px;
+  border-radius: 12px;
+  background: #f9f1eb url("../../public/assets/images/mypage_banner.png")
+    center / cover no-repeat;
+}
+.mypage-banner h1 {
+  margin: 0 0 10px;
+  color: #4e2c18;
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: -1.2px;
+}
+.mypage-banner p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.8;
+}
+.mypage-banner .mypage-banner-note {
+  margin-left: 24px;
+  font-size: 13px;
+}
+.mypage-banner-note::after {
+  content: "";
+  display: block;
+  width: 34px;
+  height: 1px;
+  margin-top: 14px;
+  background: #744932;
+}
+.mypage-panel {
+  margin-top: 12px;
+  padding: 14px 22px;
+  border: 1px solid #eee2da;
+  border-radius: 10px;
+  background: #fff;
+}
+.mypage-panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+.mypage-panel-heading h2 {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+.mypage-panel-heading h2 i {
+  width: 26px;
+  color: #57321e;
+  font-size: 25px;
+  text-align: center;
+}
+.mypage-outline-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 8px 16px;
+  min-height: 34px;
+  border: 1px solid #b7917c;
+  border-radius: 6px;
+  color: #633b25;
+  background: #fff;
+  font: inherit;
+  font-size: 13px;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.mypage-outline-button:hover {
+  background: #fcf5ef;
+}
+.mypage-outline-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.mypage-profile {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 32px;
+}
+.mypage-profile-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+}
+.mypage-avatar {
+  display: grid;
+  place-items: center;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  background: #f7eee8;
+  color: #bda08f;
+  font-size: 64px;
+}
+.mypage-profile-summary > strong {
+  font-size: 20px;
+}
+.mypage-member-badge {
+  padding: 5px 20px;
+  border-radius: 8px;
+  background: #f8eee7;
+  color: #744932;
+  font-size: 13px;
+}
+.mypage-profile-fields {
+  margin: 0;
+}
+.mypage-profile-fields > div {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: 20px;
+  padding: 7px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.mypage-profile-fields dt {
+  font-weight: 600;
+}
+.mypage-profile-fields dd {
+  margin: 0;
+  color: #60616b;
+  overflow-wrap: anywhere;
+}
+.mypage-filters {
+  display: flex;
+  border-bottom: 1px solid #e5e2df;
+  margin: 0 0 6px;
+  overflow-x: auto;
+}
+.mypage-filters button {
+  flex: 0 0 145px;
+  padding: 12px 16px;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: #65616a;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+.mypage-filters button.is-active {
+  color: #603b27;
+  border-bottom-color: #603b27;
+  font-weight: 700;
+}
+.mypage-table-scroll {
+  overflow-x: auto;
+}
+.mypage-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  text-align: center;
+}
+.mypage-table th {
+  background: #faf7f4;
+  color: #555;
+  padding: 7px 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.mypage-table td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #eee;
+  color: #60616b;
+  vertical-align: middle;
+}
+.mypage-cat-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+.mypage-cat-cell img {
+  width: 54px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.mypage-cat-cell strong {
+  display: block;
+  color: #222;
+  font-weight: 600;
+}
+.mypage-cat-cell small {
+  display: block;
+  margin-top: 4px;
+}
+.mypage-status {
+  display: inline-block;
+  border-radius: 8px;
+  padding: 5px 10px;
+  white-space: nowrap;
+}
+.mypage-status.pending {
+  background: #e0f3fc;
+  color: #196285;
+}
+.mypage-status.completed {
+  background: #e0f4e4;
+  color: #287543;
+}
+.mypage-status.cancelled {
+  background: #ffe6e7;
+  color: #bd343e;
+}
+.mypage-posts-table .fa-heart {
+  color: #ed6565;
+}
+.mypage-reservation-detail {
+  margin-top: 8px;
+  font-size: 12px;
+}
+.mypage-empty {
+  min-height: 145px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 22px 12px;
+}
+.mypage-empty > i {
+  margin-bottom: 2px;
+  color: #bfa38f;
+  font-size: 27px;
+}
+.mypage-empty strong {
+  color: #766052;
+  font-size: 14px;
+  font-weight: 600;
+}
+.mypage-empty span {
+  font-size: 12px;
+  color: #8d8783;
+}
+.mypage-login-notice {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 20px;
+  margin-top: 12px;
+  border-radius: 8px;
+  background: #faf5ee;
+  font-size: 13px;
+}
+.mypage-login-notice a {
+  color: #744932;
+  white-space: nowrap;
+}
+.mypage-content :is(button, a):focus-visible {
+  outline: 2px solid #744932;
+  outline-offset: 3px;
+}
+@media (max-width: 1100px) {
+  .mypage-profile {
+    grid-template-columns: 180px minmax(0, 1fr);
+    gap: 20px;
+  }
+  .mypage-profile-fields > div {
+    grid-template-columns: 90px minmax(0, 1fr);
+  }
+  .mypage-banner .mypage-banner-note {
+    display: none;
+  }
+}
+@media (max-width: 700px) {
+  .mypage-content {
+    padding: 0 12px 20px;
+  }
+  .mypage-banner {
+    padding: 24px 18px;
+    background-position: 60% center;
+  }
+  .mypage-banner > div {
+    padding: 8px;
+    border-radius: 8px;
+    background: rgb(255 249 244 / 82%);
+  }
+  .mypage-banner h1 {
+    font-size: 28px;
+  }
+  .mypage-banner p {
+    font-size: 12px;
+  }
+  .mypage-panel {
+    padding: 16px 12px;
+  }
+  .mypage-panel-heading h2 {
+    font-size: 17px;
+    gap: 9px;
+  }
+  .mypage-panel-heading h2 i {
+    font-size: 20px;
+    width: 20px;
+  }
+  .mypage-outline-button {
+    padding: 7px 9px;
+    font-size: 11px;
+  }
+  .mypage-profile {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .mypage-profile-summary {
+    padding: 10px 0;
+  }
+  .mypage-profile-fields > div {
+    grid-template-columns: 75px minmax(0, 1fr);
+    font-size: 13px;
+  }
+  .mypage-table {
+    min-width: 650px;
+  }
+  .mypage-filters button {
+    flex-basis: 110px;
+  }
+  .mypage-login-notice {
+    flex-wrap: wrap;
+  }
+}

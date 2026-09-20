@@ -8,4 +8,5 @@ export const ROUTES = {
   login: "/login",
   reservation: "/reservation",
   signup: "/signup",
+  mypage: "/mypage",
 } as const;

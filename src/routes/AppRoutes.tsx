@@ -9,6 +9,7 @@ import { HomePage } from "../pages/HomePage";
 import { LoginPage } from "../pages/LoginPage";
 import { ReservationPage } from "../pages/ReservationPage";
 import { SignupPage } from "../pages/SignupPage";
+import { MyPage } from "../pages/MyPage";
 
 export function AppRoutes() {
   return (
@@ -22,6 +23,7 @@ export function AppRoutes() {
       <Route path={ROUTES.login} element={<LoginPage />} />
       <Route path={ROUTES.reservation} element={<ReservationPage />} />
       <Route path={ROUTES.signup} element={<SignupPage />} />
+      <Route path={ROUTES.mypage} element={<MyPage />} />
       <Route path="*" element={<Navigate to={ROUTES.home} replace />} />
     </Routes>
   );
