@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../constants/routes";
-import type { MyDiaryPost } from "../../types/MyPage";
+import type { GetDiaryType } from "../../types/DiaryPost";
 
-export function MyDiaryPosts({ posts }: { posts: MyDiaryPost[] }) {
+export function MyDiaryPosts({ posts }: { posts: GetDiaryType[] }) {
   return (
     <section className="mypage-panel" aria-labelledby="my-posts-title">
       <div className="mypage-panel-heading">
@@ -36,11 +36,17 @@ export function MyDiaryPosts({ posts }: { posts: MyDiaryPost[] }) {
                     <strong>{post.title}</strong>
                   </div>
                 </td>
-                <td>{post.createdAt.slice(0, 10)}</td>
-                <td>{post.viewCount.toLocaleString("ko-KR")}</td>
+                <td>
+                  {post.created_at ? (
+                    <time dateTime={post.created_at}>
+                      {post.created_at.slice(0, 10).replace(/-/g, ".")}
+                    </time>
+                  ) : "-"}
+                </td>
+                <td>{post.viewCount}</td>
                 <td>
                   <i className="fa-regular fa-heart" aria-hidden="true" />{" "}
-                  {post.likeCount.toLocaleString("ko-KR")}
+                  {post.likeCount}
                 </td>
               </tr>
             ))}

@@ -1,5 +1,5 @@
 import { LoginRequest, LoginResponse } from "../types/Login";
-import type { SignupRequest } from "../types/Member";
+import type { SignupRequest, MemberInfoResponse } from "../types/Member";
 import { API_BASE_URL } from "../constants/api";
 
 interface ErrorResponse {
@@ -57,4 +57,14 @@ export async function login(request: LoginRequest): Promise<LoginResponse> {
   }
 
   return response.json();
+}
+
+export async function userInfo(userId: string): Promise<MemberInfoResponse> {
+  const response = await fetch(`${API_BASE_URL}/members/${encodeURIComponent(userId)}`);
+
+  if (!response.ok) {
+    throw new Error("회원정보를 가져오지 못했습니다.");
+  }
+
+  return response.json() as Promise<MemberInfoResponse>;
 }

@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../constants/routes";
-import type { MyReservation, VisitStatus } from "../../types/MyPage";
+import { GetReservationType, VisitStatus } from "../../types/Reservation";
+import { getBreedName } from "../../constants/breeds";
+
+const branchNames: Record<string, string> = {
+  main: "FELIA CATLOG 본점",
+  cafe: "FELIA 고양이 카페",
+};
 
 const statuses: Record<VisitStatus, string> = {
   PENDING: "예약 예정",
@@ -17,11 +23,15 @@ const filters = [
 
 export function MyReservations({
   reservations,
+  isLoading = false,
+  error = null,
 }: {
-  reservations: MyReservation[];
+  reservations: GetReservationType[];
+  isLoading?: boolean;
+  error?: string | null;
 }) {
   const [filter, setFilter] = useState<"ALL" | VisitStatus>("ALL");
-  const [expandedId, setExpandedId] = useState<number | null>(null);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
   const visible = reservations.filter(
     (item) => filter === "ALL" || item.status === filter,
   );
@@ -71,18 +81,20 @@ export function MyReservations({
             </tr>
           </thead>
           <tbody>
-            {visible.map((item) => (
-              <tr key={item.reservationId}>
+            {!isLoading && !error && visible.map((item, index) => {
+              const rowId = String(item.reservationId ?? `${item.branchId}-${item.reservationDate}-${item.reservationTime}-${index}`);
+              return (
+              <tr key={rowId}>
                 <td>
                   <div className="mypage-cat-cell">
                     {item.imageUrl && <img src={item.imageUrl} alt="" />}
                     <div>
-                      <strong>{item.catName || "지정한 반려묘 없음"}</strong>
-                      <small>{item.breedName || "방문 상담"}</small>
+                      <strong>-</strong>
+                      <small>{item.breedId != null ? getBreedName(item.breedId) : "-"}</small>
                     </div>
                   </div>
                 </td>
-                <td>{item.branchName}</td>
+                <td>{branchNames[item.branchId] || item.branchId || "-"}</td>
                 <td>
                   {item.reservationDate} {item.reservationTime.slice(0, 5)}
                 </td>
@@ -98,26 +110,29 @@ export function MyReservations({
                   <button
                     type="button"
                     className="mypage-outline-button"
-                    aria-expanded={expandedId === item.reservationId}
+                    aria-expanded={expandedId === rowId}
                     onClick={() =>
                       setExpandedId(
-                        expandedId === item.reservationId
+                        expandedId === rowId
                           ? null
-                          : item.reservationId,
+                          : rowId,
                       )
                     }
                   >
                     상세보기
                   </button>
-                  {expandedId === item.reservationId && (
+                  {expandedId === rowId && (
                     <p className="mypage-reservation-detail">
                       방문 목적: {item.purpose}
                     </p>
                   )}
                 </td>
               </tr>
-            ))}
-            {visible.length === 0 && (
+            ); })}
+            {(isLoading || error) && <tr><td colSpan={6}><div className="mypage-empty" role={error ? "alert" : "status"}>
+              {isLoading ? "예약 내역을 불러오는 중입니다." : error}
+            </div></td></tr>}
+            {!isLoading && !error && visible.length === 0 && (
               <tr>
                 <td colSpan={6}>
                   <div className="mypage-empty" role="status">
