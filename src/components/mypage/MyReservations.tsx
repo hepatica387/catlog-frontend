@@ -31,7 +31,6 @@ export function MyReservations({
   error?: string | null;
 }) {
   const [filter, setFilter] = useState<"ALL" | VisitStatus>("ALL");
-  const [expandedId, setExpandedId] = useState<string | null>(null);
   const visible = reservations.filter(
     (item) => filter === "ALL" || item.status === filter,
   );
@@ -56,7 +55,6 @@ export function MyReservations({
             className={filter === value ? "is-active" : undefined}
             onClick={() => {
               setFilter(value);
-              setExpandedId(null);
             }}
           >
             {label} (
@@ -77,7 +75,6 @@ export function MyReservations({
               <th scope="col">방문 일시</th>
               <th scope="col">상태</th>
               <th scope="col">비고</th>
-              <th scope="col">상세보기</th>
             </tr>
           </thead>
           <tbody>
@@ -106,35 +103,14 @@ export function MyReservations({
                   </span>
                 </td>
                 <td>{item.memo || "-"}</td>
-                <td>
-                  <button
-                    type="button"
-                    className="mypage-outline-button"
-                    aria-expanded={expandedId === rowId}
-                    onClick={() =>
-                      setExpandedId(
-                        expandedId === rowId
-                          ? null
-                          : rowId,
-                      )
-                    }
-                  >
-                    상세보기
-                  </button>
-                  {expandedId === rowId && (
-                    <p className="mypage-reservation-detail">
-                      방문 목적: {item.purpose}
-                    </p>
-                  )}
-                </td>
               </tr>
             ); })}
-            {(isLoading || error) && <tr><td colSpan={6}><div className="mypage-empty" role={error ? "alert" : "status"}>
+            {(isLoading || error) && <tr><td colSpan={5}><div className="mypage-empty" role={error ? "alert" : "status"}>
               {isLoading ? "예약 내역을 불러오는 중입니다." : error}
             </div></td></tr>}
             {!isLoading && !error && visible.length === 0 && (
               <tr>
-                <td colSpan={6}>
+                <td colSpan={5}>
                   <div className="mypage-empty" role="status">
                     <i className="fa-regular fa-calendar" aria-hidden="true" />
                     <strong>

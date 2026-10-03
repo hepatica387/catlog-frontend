@@ -2517,6 +2517,7 @@ body:has(.sidebar) .main-content {
   flex: 1;
   min-width: 0;
   overflow-y: auto;
+  scrollbar-gutter: stable;
 }
 
 .user-menu a.active {

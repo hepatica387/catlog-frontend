@@ -145,9 +145,6 @@ export function MyPage() {
                         ? `${currentProfile?.userName || member.userName}님`
                         : "방문자님"}
                     </strong>
-                    <span className="mypage-member-badge">
-                      {member ? "일반회원" : "로그인 전"}
-                    </span>
                   </div>
                   <dl className="mypage-profile-fields">
                     {profileFields.map(([label, value]) => (

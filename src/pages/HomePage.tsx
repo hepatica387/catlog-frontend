@@ -6,72 +6,10 @@ import { TopBar } from "../components/TopBar";
 import { Footer } from "../components/Footer";
 import { useEffect, useState } from "react";
 import { Cat } from "../types/Cat";
-import { findAll, top7Cats } from "../api/catApi";
+import { top7Cats } from "../api/catApi";
 import { getBreedName } from "../constants/breeds";
 
-const newCats: any[] = [
-  // {
-  //   id: 1,
-  //   name: "먼지",
-  //   breed: "브리티시 숏헤어",
-  //   age: "3개월",
-  //   image: "cat2.png",
-  // },
-  // {
-  //   id: 2,
-  //   name: "로미",
-  //   breed: "러시안 블루",
-  //   age: "4개월",
-  //   image: "cat3.png",
-  // },
-  // {
-  //   id: 3,
-  //   name: "만두",
-  //   breed: "스코티시 폴드",
-  //   age: "2개월",
-  //   image: "cat4.png",
-  // },
-  // { id: 4, name: "모카", breed: "먼치킨", age: "3개월", image: "cat5.png" },
-  // {
-  //   id: 5,
-  //   name: "보리",
-  //   breed: "노르웨이 숲",
-  //   age: "5개월",
-  //   image: "cat6.png",
-  // },
-  // {
-  //   id: 6,
-  //   name: "제리",
-  //   breed: "코리안 숏헤어",
-  //   age: "2개월",
-  //   image: "cat22.png",
-  // },
-  // { id: 7, name: "루카", breed: "샴", age: "3개월", image: "cat23.png" },
-];
-
 const stories: any[] = [];
-//   {
-//     title: "우리 집에 처음 온 날",
-//     text: "새로운 가족을 맞이한 집사의 따뜻한 이야기를 만나보세요.",
-//     image: "cat12.png",
-//   },
-//   {
-//     title: "처음 만난 고양이 친구",
-//     text: "조심스럽던 첫 만남부터 가까워진 순간까지 기록했습니다.",
-//     image: "cat13.png",
-//   },
-//   {
-//     title: "건강하게 자라는 중",
-//     text: "매일 달라지는 반려묘의 성장 과정을 함께 나눠요.",
-//     image: "cat14.png",
-//   },
-//   {
-//     title: "우리 가족이 된 날",
-//     text: "입양 상담부터 첫 만남까지, 특별한 하루의 기록입니다.",
-//     image: "cat15.png",
-//   },
-// ];
-
 function PawIcon() {
   return (
     <svg aria-hidden="true" viewBox="0 0 24 24">
@@ -151,7 +89,10 @@ export function HomePage() {
                   href={`/detail?id=${cat.breedId}`}
                   key={cat.breedId}
                 >
-                  <img src={`/assets/${cat.imageUrl}`} alt={cat.name} />
+                  <img
+                    src={`/assets${cat.imageUrl}`}
+                    alt={cat.name}
+                  />
                   <strong>{cat.name}</strong>
                   <span>
                     {getBreedName(cat.breedId)} / {cat.ageMonth}개월

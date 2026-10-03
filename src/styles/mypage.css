@@ -117,13 +117,6 @@
 .mypage-profile-summary > strong {
   font-size: 20px;
 }
-.mypage-member-badge {
-  padding: 5px 20px;
-  border-radius: 8px;
-  background: #f8eee7;
-  color: #744932;
-  font-size: 13px;
-}
 .mypage-profile-fields {
   margin: 0;
 }
