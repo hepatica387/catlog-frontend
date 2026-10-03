@@ -9,27 +9,6 @@ import { useEffect, useState } from "react";
 import { findAll } from "../api/catApi";
 import { BREED_IDS } from "../constants/breeds";
 
-const breeds = [
-  "노르웨이숲",
-  "랙돌",
-  "먼치킨",
-  "러시안블루",
-  "스코티쉬",
-  "스핑크스",
-  "터키쉬앙고라",
-  "페르시안",
-  "샴",
-  "봄베이",
-  "뱅갈",
-  "아비시니",
-  "브리티쉬숏헤어",
-  "아메리칸숏헤어",
-  "코리안숏헤어",
-  "데몬렉스",
-  "메인쿤",
-  "기타묘",
-];
-
 export function AdoptionPage() {
   const [cats, setCats] = useState<Cat[]>([]);
   const [isLoading, setIsLoading] = useState(true);

@@ -1,4 +1,4 @@
-﻿import { findAll } from "../api/catApi";
+import { findAll } from "../api/catApi";
 import type { Cat } from "../types/Cat";
 
 export function initDetailPageLogic() {

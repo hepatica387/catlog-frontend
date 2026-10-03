@@ -1,6 +1,4 @@
 import { PageFrame } from "../components/PageFrame";
-import { usePageLogic } from "../hooks/usePageLogic";
-import { initHomePage } from "../pageLogic/home";
 import { Sidebar } from "../components/Sidebar";
 import { TopBar } from "../components/TopBar";
 import { Footer } from "../components/Footer";
@@ -77,7 +75,7 @@ export function HomePage() {
               더보기
             </a>
           </div>
-          {cats.length == 0 ? (
+          {cats.length === 0 ? (
             <>
               <div>새로 들어온 고양이가 없습니다.</div>
             </>
@@ -114,7 +112,7 @@ export function HomePage() {
             </a>
           </div>
           <div className="story-grid">
-            {stories.length == 0 ? (
+            {stories.length === 0 ? (
               <article className="story-card">
                 <div>첫 게시물을 등록해 보세요.</div>
               </article>
